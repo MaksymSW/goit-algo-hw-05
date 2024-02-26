@@ -3,7 +3,7 @@ def input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Give me name and phone please."
+            return "Enter the argument for the command"
         except KeyError:
             return "No such name found"
         except IndexError:
@@ -28,7 +28,8 @@ def add_contact(args, contacts):
 @input_error
 def change_contact(args, contacts):
     if args[0] in contacts.keys():
-        add_contact(args, contacts)
+        change_contact(args, contacts)
+        return "Contact updated."
     else:
         raise(KeyError)
 
