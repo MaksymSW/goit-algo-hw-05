@@ -1,3 +1,6 @@
+from numpy import inner
+
+
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -37,6 +40,11 @@ def change_contact(args, contacts):
 def show_phone(args,contacts):
     return contacts[args[0]]
 
+@input_error   
+def phone_username(args, contacts):
+    phone = contacts[args[0]]
+    return phone
+
 @input_error
 def show_all(args,contacts):
     s=''
@@ -64,6 +72,8 @@ def main():
             print(show_phone(args,contacts))
         elif command == "all":
             print(show_all(args,contacts))
+        elif command == "phone":
+            print(phone_username(args,contacts))
         else:
             print("Invalid command.")
 
