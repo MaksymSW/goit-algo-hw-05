@@ -1,6 +1,3 @@
-from numpy import inner
-
-
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -30,20 +27,13 @@ def add_contact(args, contacts):
 
 @input_error
 def change_contact(args, contacts):
-    if args[0] in contacts.keys():
-        change_contact(args, contacts)
-        return "Contact updated."
-    else:
-        raise(KeyError)
+    name, phone = args
+    contacts[name] = phone
+    return "Contact updated."
 
 @input_error
 def show_phone(args,contacts):
     return contacts[args[0]]
-
-@input_error   
-def phone_username(args, contacts):
-    phone = contacts[args[0]]
-    return phone
 
 @input_error
 def show_all(args,contacts):
@@ -73,7 +63,7 @@ def main():
         elif command == "all":
             print(show_all(args,contacts))
         elif command == "phone":
-            print(phone_username(args,contacts))
+            print("Enter the argument for the command")
         else:
             print("Invalid command.")
 
