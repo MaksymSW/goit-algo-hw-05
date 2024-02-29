@@ -3,7 +3,7 @@ def input_error(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Enter the argument for the command"
+            return "Give me name and phone, please"
         except KeyError:
             return "No such name found"
         except IndexError:
@@ -58,12 +58,10 @@ def main():
             print(add_contact(args, contacts))
         elif command == "change":
             print(change_contact(args, contacts))
-        elif command == "show":
+        elif command == "phone":
             print(show_phone(args,contacts))
         elif command == "all":
             print(show_all(args,contacts))
-        elif command == "phone":
-            print("Enter the argument for the command")
         else:
             print("Invalid command.")
 
